@@ -163,7 +163,7 @@
 		</div>
 
 		<?php
-			echo "<div class='box'><p style='text-align:left; margin-left: 50px'><h3 style='text-align:center;font-size:25px; margin-bottom: -30px; margin-top:-10px'>Your input:</h3>";
+			echo "<div class='box'><p style='text-align:left'><h3 style='text-align:center;font-size:25px; margin-bottom: -30px; margin-top:-10px'>Your input:</h3>";
 			echo "<table  style='margin-top: -40px''>";
 			echo "<tr><th>Name:</th><td>";
 			echo $name;
@@ -196,22 +196,23 @@
 </div>
 <div  style="margin-top:1em; margin-bottom:3em">
 <a href="https://www.facebook.com/sherinecoronel" target="_blank" style="text-decoration:none">
-<img src="fb1.jpg"
+<img src="fb1.jpg "
   alt="Facebook"
-  width="50"height="50"/> </a>
+  width="50"height="50"onmouseover="this.src='ic2.png'" onmouseout="this.src='fb1.jpg'"/> </a>
 <a href="https://www.twitter.com/shencoronel" target="_blank" style="text-decoration:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="twitter1.jpg"
   alt="Twitter"
-  width="50"height="50"/> </a>
+  width="50"height="50"onmouseover="this.src='ic.png'" onmouseout="this.src='twitter1.jpg'"/> </a>
 <a href="https://www.snapchat.com/add/shencoronel" target="_blank" style="text-decoration:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="snap1.jpg"
   alt="Snapchat"
-  width="50"height="50"/> </a>
+  width="50"height="50"onmouseover="this.src='ic3.png'" onmouseout="this.src='snap1.jpg'"/> </a>
 <a href="http://www.malawaknautak.tumblr.com" target="_blank" style="text-decoration:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="tumblr1.jpg"
   alt="Tumblr"
-  width="50"height="50"/> </a>
+  width="50"height="50"onmouseover="this.src='ic4.png'" onmouseout="this.src='tumblr1.jpg'"/> </a>
 </div>
 </body>
 </html>
+
 
