@@ -34,36 +34,52 @@ function delete_id(id)
 </script>
 
 <style>
-table, th, td {
-		background-color:hsla(120,100%,75%,0.3);
+
+	body{
+		font-family: Georgia;
+	}
+	div{
+		text-align:center;
+	}
+	table, th, td {
 		width: 48%;
 		margin: 30px;
 		margin-left: 420px;
 		margin-right: 250px;
 		padding:10;
 		text-align:center;
-		border: 1px hotpink;
+		border: 1px solid gray;
 		border-collapse: collapse;
 	}
-
-
-table,td,th{
- border:solid #00ff00 1px;
- padding:15px;
-}
-
-table td input{
- width:97%;
- height:35px;
- border:dashed #00a2d1 1px;
- padding-left:15px;
- font-family:Georgia;
- box-shadow:0px 0px 0px rgba(1,0,0,0.2);
- outline:none;
-}
-
-#add:hover{
-    background-color:hsla(120,100%,50%,0.3)
+	th, td {
+		padding: 10px;
+		text-align: center;
+	}
+	a:link {
+		color: black;
+		width: 100%;
+		text-decoration: none;
+	}
+	a:visited {
+    color: gray;
+	}
+	a:hover {
+		color: hotpink;
+	}
+	div.box {
+		text-align:center;
+		background-color:rgba(192,192,192,0.3);
+		color: 333333;
+		margin: 30px;
+		margin-left: 250px;
+		margin-right: 250px;
+		padding:10;
+	}
+	.error {color: #FF0000;
+	}
+	
+	#add_data:hover{
+    background-color: #d6cfc4;
 }
 
 </style>
@@ -76,21 +92,22 @@ table td input{
  <div id="content">
     <table align="center">
     <tr>
-    <th id="add"colspan="10" onclick="window.location='form.php'" style="cursor: pointer"> Add Data Here </a></th>
+    <th id="add_data"colspan="10" onclick="window.location='form.php'" style="cursor: pointer"> Add Data Here </a></th>
     </tr>
     <th>First Name</th>
     <th>Last Name</th>
-    <th>Nickname</th>
+    <th>Nickame</th>
     <th>Email</th>
     <th>Home Address</th>
     <th>Gender</th>
     <th>Mobile Number</th>
     <th>Comment</th>
+    <th colspan="2">Operations</th>
     </tr>
     <?php
  $sql_query="SELECT * FROM users";
- $result_set=mysql_query($sql_query);
- while($row=mysql_fetch_row($result_set))
+ $result_set=mysqli_query($connect,$sql_query);
+ while($row=mysqli_fetch_row($result_set))
  {
   ?>
         <tr>
@@ -101,6 +118,7 @@ table td input{
         <td><?php echo $row[5]; ?></td>
         <td><?php echo $row[6]; ?></td>
         <td><?php echo $row[7]; ?></td>
+        <td><?php echo $row[8]; ?></td>
   <td align="center"><a href="javascript:edt_id('<?php echo $row[0]; ?>')"><img src="p_edit.png" align="EDIT" style="width: 20px"/></a></td>
         <td align="center"><a href="javascript:delete_id('<?php echo $row[0]; ?>')"><img src="p_drop.png" align="DELETE" /></a></td>
         </tr>
