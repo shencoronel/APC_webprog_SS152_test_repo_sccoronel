@@ -73,7 +73,7 @@ if(isset($_POST['submit'])){
 
     if($Error != "Error"){
       $sql_query = "INSERT INTO users(firstname, lastname, nickname, email, homeadd, gender, cpnum, comment) VALUES('$firstname','$lastname','$nickname', '$email','$homeadd','$gender','$cpnum', '$comment')";
-      mysql_query($sql_query);
+      mysqlI_query($connect,$sql_query);
     }
 }
 

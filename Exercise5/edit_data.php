@@ -3,8 +3,8 @@ include_once 'dbconfig.php';
 if(isset($_GET['edit_id']))
 {
  $sql_query="SELECT * FROM users WHERE user_id=".$_GET['edit_id'];
- $result_set=mysql_query($sql_query);
- $fetched_row=mysql_fetch_array($result_set);
+ $result_set=mysqli_query($connect,$sql_query);
+ $fetched_row=mysqli_fetch_array($result_set);
 }
 
 $Error = $firstnameErr = $lastnameErr = $nicknameErr = $emailErr = $genderErr = $homeaddErr = $cpnumErr = "";
@@ -62,7 +62,7 @@ if(isset($_POST['btn-update'])){
   $cpnum = test_input($_POST["cpnum"]);
     
   // check if phoneNum only contains numbers
-  if (!preg_match("/^[0-9]*$/",$phoneNum)) {
+  if (!preg_match("/^[0-9]*$/",$cpnum)) {
     $cpnumErr = "Only numbers are allowed";
     $Error = "Error"; 
   }
@@ -78,7 +78,7 @@ if(isset($_POST['btn-update'])){
     $sql_query = "UPDATE users SET firstname='$firstname',lastname='$lastname',nickname='$nickname',email='$email',homeadd='$homeadd',gender='$gender',cpnum='$cpnum',comment='$comment' WHERE user_id=".$_GET['edit_id'];
   }
 
-  if(mysql_query($sql_query) && $Error != "Error"){
+  if(mysqli_query($connect,$sql_query) && $Error != "Error"){
     ?>
     <script type="text/javascript">
     alert('Data Are Updated Successfully');
