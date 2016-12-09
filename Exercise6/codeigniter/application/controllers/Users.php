@@ -10,7 +10,7 @@ class Users extends CI_Controller {
 
   public function index(){
     $data['user_list'] = $this->users_model->get_all_users();
-    $this->load->view('', $data);
+    $this->load->view('index.php', $data);
   }
 
   public function add_form(){
