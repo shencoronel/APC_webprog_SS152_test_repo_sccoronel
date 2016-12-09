@@ -18,13 +18,13 @@ class Users extends CI_Controller {
   }
 
   public function insert_user_db(){
-    $udata['fname'] = $this->input->post('fname');
-    $udata['lname'] = $this->input->post('lname');
+    $udata['firstname'] = $this->input->post('firstname');
+    $udata['lastname'] = $this->input->post('lastname');
     $udata['nickname'] = $this->input->post('nickname');
     $udata['email'] = $this->input->post('email');
-    $udata['homeAdd'] = $this->input->post('homeAdd');
+    $udata['homeadd'] = $this->input->post('homeadd');
     $udata['gender'] = $this->input->post('gender');
-    $udata['phoneNum'] = $this->input->post('phoneNum');
+    $udata['cpnum'] = $this->input->post('cpnum');
     $udata['comment'] = $this->input->post('comment');
 
     $res = $this->users_model->insert_users_to_db($udata);
@@ -44,12 +44,12 @@ class Users extends CI_Controller {
   function update_users_id1() {
     $id= $this->input->post('did');
     $data = array(
-    'fname' => $this->input->post('fname'),
-    'lname' => $this->input->post('lname'),
+    'firstname' => $this->input->post('firstname'),
+    'lastname' => $this->input->post('lastname'),
     'email' => $this->input->post('email'),
-    'homeAdd' => $this->input->post('homeAdd'),
+    'homeadd' => $this->input->post('homeadd'),
     'gender' => $this->input->post('gender'),
-    'phoneNum' => $this->input->post('phoneNum'),
+    'cpnum' => $this->input->post('cpnum'),
     'comment' => $this->input->post('comment')
     );
     $this->users_model->update_users_id1($id, $data);

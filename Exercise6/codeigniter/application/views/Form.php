@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <title>Shen Coronel</title>
-<body>
 
 <style>
 	body{
@@ -47,6 +46,8 @@
 	.error {color: #FF0000;
 	}
 </style>
+
+<body>
 <div style="text-align:center; margin-top:3em; margin-bottom:1em">
 	<img src="name.jpg" style="width:721px;height:80px;">
 </div>
@@ -64,7 +65,7 @@
 	
 		<h2 style="text-align:center; font-size: 20px; margin-bottom: 1px">Form Validation</h2>
 		<p style="text-align:center; margin-bottom: 3px""><span class="error">* required field.</span></p>
-			<form method="post">  
+			<form method="post" action="<?php echo base_url();?>index.php/users/insert_user_db"> 
 				<table align = "center">
 				
 				<tr align="center">
