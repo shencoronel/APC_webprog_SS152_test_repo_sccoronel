@@ -1,16 +1,3 @@
-<?php
-include_once 'dbconfig.php';
-
-// delete condition
-if(isset($_GET['delete_id']))
-{
- $sql_query="DELETE FROM users WHERE user_id=".$_GET['delete_id'];
- mysql_query($sql_query);
- header("Location: $_SERVER[PHP_SELF]");
-}
-// delete condition
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,21 +91,20 @@ function delete_id(id)
     <th>Comment</th>
     <th colspan="2">Operations</th>
     </tr>
-    <?php
- $sql_query="SELECT * FROM users";
- $result_set=mysqli_query($connect,$sql_query);
- while($row=mysqli_fetch_row($result_set))
- {
-  ?>
+    
+
+    <?php foreach ($user_list as $u_key){ ?>
         <tr>
-        <td><?php echo $row[1]; ?></td>
-        <td><?php echo $row[2]; ?></td>
-        <td><?php echo $row[3]; ?></td>
-        <td><?php echo $row[4]; ?></td>
-        <td><?php echo $row[5]; ?></td>
-        <td><?php echo $row[6]; ?></td>
-        <td><?php echo $row[7]; ?></td>
-        <td><?php echo $row[8]; ?></td>
+        <td><?php echo $u_key->firstname; ?></td>
+        <td><?php echo $u_key->lastname; ?></td>
+        <td><?php echo $u_key->nickname; ?></td>
+        <td><?php echo $u_key->email; ?></td>
+        <td><?php echo $u_key->homeadd; ?></td>
+        <td><?php echo $u_key->gender; ?></td>
+        <td><?php echo $u_key->cpnum; ?></td>
+        <td><?php echo $u_key->comment; ?></td>
+
+
   <td align="center"><a href="javascript:edt_id('<?php echo $row[0]; ?>')"><img src="p_edit.png" align="EDIT" style="width: 20px"/></a></td>
         <td align="center"><a href="javascript:delete_id('<?php echo $row[0]; ?>')"><img src="p_drop.png" align="DELETE" /></a></td>
         </tr>
