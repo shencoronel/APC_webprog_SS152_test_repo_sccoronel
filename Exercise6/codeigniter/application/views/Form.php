@@ -1,8 +1,27 @@
 <!DOCTYPE html>
 <html>
-<title>Shen Coronel</title>
+<head>
+<title>Form Validation</title>
+
+<script type="text/javascript">
+function edt_id(id)
+{
+ if(confirm('Sure to edit ?'))
+ {
+  window.location.href='edit_data.php?edit_id='+id;
+ }
+}
+function delete_id(id)
+{
+ if(confirm('Sure to Delete ?'))
+ {
+  window.location.href='index.php?delete_id='+id;
+ }
+}
+</script>
 
 <style>
+
 	body{
 		font-family: Georgia;
 	}
@@ -45,123 +64,57 @@
 	}
 	.error {color: #FF0000;
 	}
+	
+	#add_data:hover{
+    background-color: #d6cfc4;
+}
+
 </style>
 
+</head>
 <body>
-<div style="text-align:center; margin-top:3em; margin-bottom:1em">
-	<img src="name.jpg" style="width:721px;height:80px;">
-</div>
-
-<div id="link" style = "margin-top:5em">
-	<p>
-	<a href="Coronel.html">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="Gallery.html">GALLERY</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="About Me.html">ABOUT ME</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="Form.php">FORM</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="Contact.html">CONTACT</a>
-	</p>
-</div>
-		<div class="box">
-	
-		<h2 style="text-align:center; font-size: 20px; margin-bottom: 1px">Form Validation</h2>
-		<p style="text-align:center; margin-bottom: 3px""><span class="error">* required field.</span></p>
-			<form method="post" action="<?php echo base_url();?>index.php/users/insert_user_db"> 
-				<table align = "center">
-				
-				<tr align="center">
-					<td><a href = "index.php"> Back to Main Page </a></td>
-				</tr>
-
-				<tr>
-					<td>
-						<input type="text" name="firstname" placeholder= "First Name" required>
-						<span class="error">*</span>
-					</td>
-				</tr>
-        
-				<tr>
-					<td>
-						<input type="text" name="lastname" placeholder="Last Name"  required>
-						<span class="error">*</span>
-					</td>
-				</tr>
-        
-				<tr>
-					<td>
-						<input type="text" name="nickname" placeholder="Nickname"  required>
-						<span class="error">* </span>
-					</td>
-				</tr>
-        
-				<tr>
-					<td>
-						<input type="text" name="email" placeholder="Email"  required>
-						<span class="error">* </span>
-					</td>
-				</tr>
-        
-				<tr>
-					<td>
-						<input type="text" name="homeadd" placeholder="Home Address" >
-						<span class="error"></span>
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						Gender:
-						<input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="Female" required> Female
-						<input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="Male"> Male 
-						<span class="error">* </span>
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-					<input type="text" name="cpnum" placeholder="Phone Number" required>
-					<span class="error">* </span>
-					</td>
-				</tr>
-        
-				<tr>
-					<td>
-					<textarea name="comment" placeholder="Comment" rows="5" cols="40" > </textarea>
-					</td>
-				</tr>
-        
-				<td>
-					<p><span class="error">* required field </span></p>
-					<button type="submit" name="submit" value="Submit"> SUBMIT </button>
-				</td>
-				</table>
-			</form>
-		</div>
-		
 <center>
 
-<hr	size="2px" width="75%" color="gray">
-<div  style="margin-top:3em">
-<p><i>STAY IN TOUCH WITH ME.</i><br>
+<div id="body">
+ <div id="content">
+    <table align="center">
+    <tr>
+    <th id="add_data"colspan="10" onclick="window.location='form.php'" style="cursor: pointer"> Add Data Here </a></th>
+    </tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Nickame</th>
+    <th>Email</th>
+    <th>Home Address</th>
+    <th>Gender</th>
+    <th>Mobile Number</th>
+    <th>Comment</th>
+    <th colspan="2">Operations</th>
+    </tr>
+    
+
+    <?php foreach ($user_list as $u_key){ ?>
+        <tr>
+        <td><?php echo $u_key->firstname; ?></td>
+        <td><?php echo $u_key->lastname; ?></td>
+        <td><?php echo $u_key->nickname; ?></td>
+        <td><?php echo $u_key->email; ?></td>
+        <td><?php echo $u_key->homeadd; ?></td>
+        <td><?php echo $u_key->gender; ?></td>
+        <td><?php echo $u_key->cpnum; ?></td>
+        <td><?php echo $u_key->comment; ?></td>
+
+
+  <td align="center"><a href="javascript:edt_id('<?php echo $row[0]; ?>')"><img src="p_edit.png" align="EDIT" style="width: 20px"/></a></td>
+        <td align="center"><a href="javascript:delete_id('<?php echo $row[0]; ?>')"><img src="p_drop.png" align="DELETE" /></a></td>
+        </tr>
+        <?php
+ }
+ ?>
+    </table>
+    </div>
 </div>
-<div  style="margin-top:1em; margin-bottom:3em">
-<a href="https://www.facebook.com/sherinecoronel" target="_blank" style="text-decoration:none">
-<img src="fb1.jpg "
-  alt="Facebook"
-  width="50"height="50"onmouseover="this.src='ic2.png'" onmouseout="this.src='fb1.jpg'"/> </a>
-<a href="https://www.twitter.com/shencoronel" target="_blank" style="text-decoration:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="twitter1.jpg"
-  alt="Twitter"
-  width="50"height="50"onmouseover="this.src='ic.png'" onmouseout="this.src='twitter1.jpg'"/> </a>
-<a href="https://www.snapchat.com/add/shencoronel" target="_blank" style="text-decoration:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="snap1.jpg"
-  alt="Snapchat"
-  width="50"height="50"onmouseover="this.src='ic3.png'" onmouseout="this.src='snap1.jpg'"/> </a>
-<a href="http://www.malawaknautak.tumblr.com" target="_blank" style="text-decoration:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="tumblr1.jpg"
-  alt="Tumblr"
-  width="50"height="50"onmouseover="this.src='ic4.png'" onmouseout="this.src='tumblr1.jpg'"/> </a>
-</div>
+
+</center>
 </body>
 </html>
-
-
