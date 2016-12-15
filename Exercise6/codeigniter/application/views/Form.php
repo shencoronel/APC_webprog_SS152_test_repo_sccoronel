@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <title>Shen Coronel</title>
-<body>
+
 <style>
 	body{
 		font-family: Georgia;
@@ -10,18 +10,14 @@
 		text-align:center;
 	}
 	table, th, td {
+		width: 48%;
+		margin: 30px;
+		margin-left: 420px;
+		margin-right: 250px;
+		padding:10;
 		text-align:center;
-		border: 1px dashed gray;
+		border: 1px solid gray;
 		border-collapse: collapse;
-	}
-	table#t01 th {
-		background-color: white;
-		color: black;
-	}
-	table#t01 td {
-		background-color: white;
-		color: black;
-		font-size:5
 	}
 	th, td {
 		padding: 10px;
@@ -38,7 +34,20 @@
 	a:hover {
 		color: hotpink;
 	}
+	div.box {
+		text-align:center;
+		background-color:rgba(192,192,192,0.3);
+		color: 333333;
+		margin: 30px;
+		margin-left: 250px;
+		margin-right: 250px;
+		padding:10;
+	}
+	.error {color: #FF0000;
+	}
 </style>
+
+<body>
 <div style="text-align:center; margin-top:3em; margin-bottom:1em">
 	<img src="name.jpg" style="width:721px;height:80px;">
 </div>
@@ -46,50 +55,88 @@
 <div id="link" style = "margin-top:5em">
 	<p>
 	<a href="Coronel.html">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="<?php echo base_url('index.php/Gallery/index')?>">GALLERY</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="<?php echo base_url('index.php/AboutMe/index')?>">ABOUT ME</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="<?php echo base_url('index.php/Users/add_form')?>">FORM</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="<?php echo base_url('index.php/Contact/index')?>">CONTACT</a>
-	</p>
-
-<div>
-	<img src="boom.jpg" alt="profile-pic" style="width:202;height:444px;margin-top:2em">
-</div>
-<center>
-<div style = "margin-top:3em;text-align: center;">
-	<p><b>Sherine Jane C. Coronel</b>,<br></p>
-	<p>mostly known as <i>Shen</i>, is a 17 year old girl who hails from Hagonoy, Bulacan and currently lives<br>
-	in Quezon City. She is a 2<i>nd</i> year college student taking Bachelor of Science in Computer Science <br>
-	with specialization in Software System in Asia Pacific College. 
+	<a href="Gallery.html">GALLERY</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="About Me.html">ABOUT ME</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="Form.php">FORM</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="Contact.html">CONTACT</a>
 	</p>
 </div>
-</head>
-<div>
-<center>
-<table style="width:70%; margin-top:5em;margin-bottom:3em" id="t01";>
-  <tr>
-    <th>HOBBIES</th>
-    <th>INTERESTS</th>
-  </tr>
-<tr>
-    <td>Watching KDramas and movies</td>
-    <td>Online games such as DOTA 2</td>
-  </tr>
-  <tr>
-    <td>Ice Skating</td>
-    <td>Cooking and baking</td>
-  </tr>
-    <tr>
-    <td>Web Surfing</td>
-    <td>Photography</td>
-  </tr>
-  <tr>
-    <td>Listening to R&B Music</td>
-    <td>Board Games</td>
-  </tr>
-</table>
-</div >
+		<div class="box">
+	
+		<h2 style="text-align:center; font-size: 20px; margin-bottom: 1px">Form Validation</h2>
+		<p style="text-align:center; margin-bottom: 3px""><span class="error">* required field.</span></p>
+			<form method="post" action="<?php echo base_url();?>index.php/users/insert_user_db"> 
+				<table align = "center">
+				
+				<tr align="center">
+					<td><a href = "index.php"> Back to Main Page </a></td>
+				</tr>
 
+				<tr>
+					<td>
+						<input type="text" name="firstname" placeholder= "First Name" required>
+						<span class="error">*</span>
+					</td>
+				</tr>
+        
+				<tr>
+					<td>
+						<input type="text" name="lastname" placeholder="Last Name"  required>
+						<span class="error">*</span>
+					</td>
+				</tr>
+        
+				<tr>
+					<td>
+						<input type="text" name="nickname" placeholder="Nickname"  required>
+						<span class="error">* </span>
+					</td>
+				</tr>
+        
+				<tr>
+					<td>
+						<input type="text" name="email" placeholder="Email"  required>
+						<span class="error">* </span>
+					</td>
+				</tr>
+        
+				<tr>
+					<td>
+						<input type="text" name="homeadd" placeholder="Home Address" >
+						<span class="error"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Gender:
+						<input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="Female" required> Female
+						<input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="Male"> Male 
+						<span class="error">* </span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+					<input type="text" name="cpnum" placeholder="Phone Number" required>
+					<span class="error">* </span>
+					</td>
+				</tr>
+        
+				<tr>
+					<td>
+					<textarea name="comment" placeholder="Comment" rows="5" cols="40" > </textarea>
+					</td>
+				</tr>
+        
+				<td>
+					<p><span class="error">* required field </span></p>
+					<button type="submit" name="submit" value="Submit"> SUBMIT </button>
+				</td>
+				</table>
+			</form>
+		</div>
+		
 <center>
 
 <hr	size="2px" width="75%" color="gray">
@@ -116,3 +163,5 @@
 </div>
 </body>
 </html>
+
+
