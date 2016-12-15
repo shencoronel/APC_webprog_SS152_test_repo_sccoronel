@@ -3,23 +3,6 @@
 <head>
 <title>Form Validation</title>
 
-<script type="text/javascript">
-function edt_id(id)
-{
- if(confirm('Sure to edit ?'))
- {
-  window.location.href='edit_data.php?edit_id='+id;
- }
-}
-function delete_id(id)
-{
- if(confirm('Sure to Delete ?'))
- {
-  window.location.href='index.php?delete_id='+id;
- }
-}
-</script>
-
 <style>
 
 	body{
