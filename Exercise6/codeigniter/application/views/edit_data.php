@@ -65,7 +65,7 @@
       <table align = "center">
       <input type="text" id="hide" name="did" value="<?php echo $users->user_id; ?>">
         <tr align="center">
-          <td><a href = "index.php"> Back to Main Page </a></td>
+          <td><a href = "<?php echo base_url('index.php/Users/index')?>"> Back to Main Page </a></td>
         </tr>
 
         <tr>
