@@ -69,7 +69,7 @@
 				<table align = "center">
 				
 				<tr align="center">
-					<td><a href = "index.php"> Back to Main Page </a></td>
+					<td><a href = "<?php echo base_url('index.php/Users/index')?>"> Back to Main Page </a></td>
 				</tr>
 
 				<tr>

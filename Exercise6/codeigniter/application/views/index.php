@@ -105,12 +105,14 @@ function delete_id(id)
         <td><?php echo $u_key->comment; ?></td>
 
 
-  <td align="center"><a href="javascript:edt_id('<?php echo $row[0]; ?>')"><img src="p_edit.png" align="EDIT" style="width: 20px"/></a></td>
-        <td align="center"><a href="javascript:delete_id('<?php echo $row[0]; ?>')"><img src="p_drop.png" align="DELETE" /></a></td>
+  <td align="center"><a href="<?php echo base_url() . "index.php/users/show_users_id/" . $u_key->user_id; ?>" onClick="show_confirm('edit',<?php echo $u_key->user_id;?>)"><img src="<?php echo base_url();?>/images/p_edit.png" style="width: 20px"></img></a></td>
+        
+
+        <td align="center"><a href="#" onClick="show_confirm('delete',<?php echo $u_key->user_id;?>)"><img src="<?php echo base_url();?>/images/p_drop.png"></img></a></td>
+        
         </tr>
-        <?php
- }
- ?>
+
+        <?php }?>
     </table>
     </div>
 </div>
