@@ -79,7 +79,7 @@ function delete_id(id)
  <div id="content">
     <table align="center">
     <tr>
-    <th id="add_data"colspan="10" onclick="window.location='form.php'" style="cursor: pointer"> Add Data Here </a></th>
+    <th id="add_data"colspan="10" style="cursor: pointer"> <a href="<?php echo base_url('index.php/Users/add_form')?>">Add Data Here </a></th></a>
     </tr>
     <th>First Name</th>
     <th>Last Name</th>
