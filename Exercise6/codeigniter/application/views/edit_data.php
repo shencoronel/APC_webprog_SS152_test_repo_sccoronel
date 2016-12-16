@@ -1,114 +1,3 @@
-<?php
-include_once 'dbconfig.php';
-if(isset($_GET['edit_id']))
-{
- $sql_query="SELECT * FROM users WHERE user_id=".$_GET['edit_id'];
- $result_set=mysqli_query($connect,$sql_query);
- $fetched_row=mysqli_fetch_array($result_set);
-}
-
-$Error = $firstnameErr = $lastnameErr = $nicknameErr = $emailErr = $genderErr = $homeaddErr = $cpnumErr = "";
-
-if(isset($_POST['btn-update'])){
- // variables for input data
-  
-  $firstname = test_input($_POST["firstname"]);
-  
-  // check if fname only contains letters and numbers
-  if (!preg_match("/^[a-zA-Z0-9 ]*$/", $firstname)) {
-    $firstnameErr = "Only letters and numbers allowed"; 
-    $Error = "Error";
-  }
-  
-  $lastname = test_input($_POST["lastname"]);
-  
-  // check if lname only contains letters and numbers
-  if (!preg_match("/^[a-zA-Z0-9 ]*$/", $lastname)) {
-    $lastnameErr = "Only letters and numbers allowed"; 
-    $Error = "Error";
-  }
-  
-  $nickname = test_input($_POST["nickname"]);
-  
-  // check if name only contains letters and whitespace
-  if (!preg_match("/^[a-zA-Z ]*$/",$nickname)) {
-    $nicknameErr = "Only letters and white space allowed"; 
-    $Error = "Error";
-  }
-
-  $email = test_input($_POST["email"]);
-    
-  // check if e-mail address is well-formed
-  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $emailErr = "Invalid email format"; 
-    $Error = "Error";
-  }
-
-  $homeadd = test_input($_POST["homeadd"]);
-    
-  // check if homeAdd only contains letters and whitespace
-  if (!preg_match("/^[a-zA-Z ]*$/",$homeadd)) {
-    $homeaddErr = "Only letters and white space allowed";
-    $Error = "Error"; 
-  }
-
-  if (empty($_POST["gender"])) { 
-    $genderErr = "Input gender";  
-    $Err = "Err";    
-  } else {    
-    $gender = test_input($_POST["gender"]);   
-  }
-  
-  $cpnum = test_input($_POST["cpnum"]);
-    
-  // check if phoneNum only contains numbers
-  if (!preg_match("/^[0-9]*$/",$cpnum)) {
-    $cpnumErr = "Only numbers are allowed";
-    $Error = "Error"; 
-  }
-
-  if (empty($_POST["comment"])) {    
-    $comment = "";    
-  } else {    
-    $comment = test_input($_POST["comment"]);   
-  }
-
- // sql query for update data into database
-  if($Err != "Err"){
-    $sql_query = "UPDATE users SET firstname='$firstname',lastname='$lastname',nickname='$nickname',email='$email',homeadd='$homeadd',gender='$gender',cpnum='$cpnum',comment='$comment' WHERE user_id=".$_GET['edit_id'];
-  }
-
-  if(mysqli_query($connect,$sql_query) && $Error != "Error"){
-    ?>
-    <script type="text/javascript">
-    alert('Data Are Updated Successfully');
-    window.location.href='index.php';
-    </script>
-    <?php
-  }
-  else{
-    ?>
-    <script type="text/javascript">
-    alert('error occured while updating data');
-    </script>
-    <?php
-  }
-}
-
-if(isset($_POST['btn-cancel']))
-{
- header("Location: index.php");
-}
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,43 +56,46 @@ function test_input($data) {
 <div style="position: relative">
   <div class="box">
     <h2 id="formValid"> Form Validation </h2>
-    <form method="post">  
+     <?php foreach ($single_users as $users): ?>
+    <form method="post" action="<?php echo base_url() . "index.php/users/update_users_id1"?>">
+
       <table align = "center">
+      <input type="text" id="hide" name="did" value="<?php echo $users->user_id; ?>">
         <tr align="center">
           <td><a href = "index.php"> Back to Main Page </a></td>
         </tr>
 
         <tr>
           <td>
-            <input type="text" name="firstname" placeholder="First Name" value="<?php echo $fetched_row['firstname']; ?>" required />
-            <span class="error">* <br><?php echo $firstnameErr;?></span>
+            <input type="text" name="firstname" placeholder="First Name" value="<?php echo $users->firstname; ?>" required />
+            <span class="error">* <br></span>
           </td>
         </tr>
         
         <tr>
           <td>
-            <input type="text" name="lastname" placeholder="Last Name" value="<?php echo $fetched_row['lastname']; ?>" required />
-            <span class="error">* <br><?php echo $lastnameErr;?></span>
+            <input type="text" name="lastname" placeholder="Last Name" value="<?php echo $users->lastname; ?>" required />
+            <span class="error">* <br></span>
           </td>
         </tr>
         
         <tr>
           <td>
-            <input type="text" name="nickname" placeholder="Nickname" value="<?php echo $fetched_row['nickname']; ?>" required />
-            <span class="error">* <br><?php echo $nicknameErr;?></span>
+            <input type="text" name="nickname" placeholder="Nickname" value="<?php echo $users->nickname; ?>" required />
+            <span class="error">* <br></span>
           </td>
         </tr>
         
         <tr>
           <td>
-            <input type="text" name="email" placeholder="Email" value="<?php echo $fetched_row['email']; ?>" required />
-            <span class="error">* <br><?php echo $emailErr;?></span>
+            <input type="text" name="email" placeholder="Email" value="<?php echo $users->email; ?>" required />
+            <span class="error">* <br></span>
           </td>
         </tr>
         
         <tr>
           <td>
-            <input type="text" name="homeadd" placeholder="Home Address" value="<?php echo $fetched_row['homeadd']; ?>" />
+            <input type="text" name="homeadd" placeholder="Home Address" value="<?php echo $users->homeadd; ?>" />
             <span class="error">* <br><?php echo $homeaddErr;?></span>
           </td>
         </tr>
@@ -219,14 +111,14 @@ function test_input($data) {
 
         <tr>
           <td>
-            <input type="text" name="cpnum" placeholder="Phone Number" value="<?php echo $fetched_row['cpnum']; ?>" required />
+            <input type="text" name="cpnum" placeholder="Phone Number" value="<?php echo $users->cpNum; ?>" required />
             <span class="error">* <br><?php echo $cpnumErr;?></span>
           </td>
         </tr>
         
         <tr>
           <td>
-            <textarea name="comment" placeholder="Comment" rows="5" cols="40" value="<?php echo $fetched_row['comment']; ?>"></textarea>
+            <textarea name="comment" placeholder="Comment" rows="5" cols="40" value="<?php echo $users->comment; ?>"></textarea>
           </td>
         </tr>
         
@@ -238,6 +130,7 @@ function test_input($data) {
         </tr>
       </table>
     </form>
+     <?php endforeach; ?>
   </div>
 </body>
 </html>
