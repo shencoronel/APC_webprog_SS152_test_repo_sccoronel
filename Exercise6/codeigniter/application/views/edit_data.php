@@ -96,7 +96,7 @@
         <tr>
           <td>
             <input type="text" name="homeadd" placeholder="Home Address" value="<?php echo $users->homeadd; ?>" />
-            <span class="error">* <br><?php echo $homeaddErr;?></span>
+            <span class="error">* <br></span>
           </td>
         </tr>
        
@@ -105,14 +105,14 @@
             Gender:
             <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="Female"> Female
             <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="Male"> Male 
-            <span class="error">* <br><?php echo $genderErr;?></span>
+            <span class="error">* <br></span>
           </td>
         </tr>
 
         <tr>
           <td>
             <input type="text" name="cpnum" placeholder="Phone Number" value="<?php echo $users->cpNum; ?>" required />
-            <span class="error">* <br><?php echo $cpnumErr;?></span>
+            <span class="error">* <br></span>
           </td>
         </tr>
         
