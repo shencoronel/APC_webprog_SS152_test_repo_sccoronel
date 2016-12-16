@@ -55,12 +55,12 @@ class Users extends CI_Controller {
     $this->users_model->update_users_id1($id, $data);
     $this->show_users_id();
     $this->load->helper('url');
-    redirect('index.php/users/index', 'refresh');
+    redirect('users/index', 'refresh');
   }
 
   public function delete($user_id){
     $this->users_model->delete_a_user($user_id);
-    redirect('index.php/users/index', 'refresh');
+    redirect('users/index', 'refresh');
   }
 
 }

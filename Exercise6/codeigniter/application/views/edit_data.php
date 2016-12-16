@@ -49,6 +49,9 @@
 	}
 	.error {color: #FF0000;
 	}
+  #hide{
+    display:none;
+  }
 
 </style>
 <body>  
@@ -111,7 +114,7 @@
 
         <tr>
           <td>
-            <input type="text" name="cpnum" placeholder="Phone Number" value="<?php echo $users->cpNum; ?>" required />
+            <input type="text" name="cpnum" placeholder="Phone Number" value="<?php echo $users->cpnum; ?>" required />
             <span class="error">* <br></span>
           </td>
         </tr>

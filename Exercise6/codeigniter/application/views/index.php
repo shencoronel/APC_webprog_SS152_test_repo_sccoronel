@@ -108,7 +108,7 @@ function delete_id(id)
   <td align="center"><a href="<?php echo base_url() . "index.php/users/show_users_id/" . $u_key->user_id; ?>" onClick="show_confirm('edit',<?php echo $u_key->user_id;?>)"><img src="<?php echo base_url();?>/images/p_edit.png" style="width: 20px"></img></a></td>
         
 
-        <td align="center"><a href="#" onClick="show_confirm('delete',<?php echo $u_key->user_id;?>)"><img src="<?php echo base_url();?>/images/p_drop.png"></img></a></td>
+        <td align="center"><a href="<?php echo base_url() . "index.php/users/delete/" . $u_key->user_id; ?>" onClick="show_confirm('delete',<?php echo $u_key->user_id;?>)"><img src="<?php echo base_url();?>/images/p_drop.png"></img></a></td>
         
         </tr>
 
