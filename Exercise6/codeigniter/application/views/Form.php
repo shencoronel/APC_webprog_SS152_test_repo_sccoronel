@@ -11,9 +11,6 @@
 	}
 	table, th, td {
 		width: 48%;
-		margin: 30px;
-		margin-left: 420px;
-		margin-right: 250px;
 		padding:10;
 		text-align:center;
 		border: 1px solid gray;
@@ -69,7 +66,7 @@
 				<table align = "center">
 				
 				<tr align="center">
-					<td><a href = "<?php echo base_url('index.php/Users/index')?>"> Back to Main Page </a></td>
+					<td><a href = "<?php echo base_url('index.php/Users/index')?>"> CLICK HERE TO SEE THE DATA </a></td>
 				</tr>
 
 				<tr>

@@ -15,9 +15,6 @@
 	}
 	table, th, td {
 		width: 48%;
-		margin: 30px;
-		margin-left: 420px;
-		margin-right: 250px;
 		padding:10;
 		text-align:center;
 		border: 1px solid gray;
@@ -42,9 +39,6 @@
 		text-align:center;
 		background-color:rgba(192,192,192,0.3);
 		color: 333333;
-		margin: 30px;
-		margin-left: 250px;
-		margin-right: 250px;
 		padding:10;
 	}
 	.error {color: #FF0000;
